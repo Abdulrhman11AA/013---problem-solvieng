@@ -1,21 +1,100 @@
 #include <iostream>
 using namespace std;
-#include <string.h>
-int main() {
-	string x; cin >> x;
-	int cou=0;
-	for (int i = 0; x[i] != '\0'; i++) {
-		//x[0] = x[0] - 32;
-		if (x[i] == 'A' || x[i] == 'O' || x[i] == 'Y' || x[i] == 'E' || x[i] == 'U' || x[i] == 'I'
-			|| x[i] == 97 || x[i] == 111 || x[i] == 121 || x[i] == 101
-			|| x[i] == 117 || x[i] == 105)
-			continue;
-		else
-			cou++;
-		if (x[i] > 97 ) x[i] = x[i] - 32;
-			cout << "." << x[i];
-
+bool x = true;
+int loop = 0;
+void vowels ( string s  ,int  i) {
+	
+	if (s[i] == 'a' || s[i] == 'o' || s[i] == 'y' || s[i] == 'u'
+		|| s[i] == 'i' || s[i] == 'e' || s[i] == 'A' || s[i] == 'O' || s[i] == 'Y'
+		|| s[i] == 'U'
+		|| s[i] == 'I' || s[i] == 'E') {
+		
+		x = false;
 	}
-	if (cou == 0)cout << cou;
+	else 
+	{
+		cout << ".";
+		
+	}
+}
+void uppercasee (string s, int i) {
+	if (s[i] < 97 && x != false) {
+		 s[i] += 32;
+		
+	}
+
+	if (x == false) {
+		i++;
+		
+	}
+	else
+	{
+		cout << s[i];
+		i++;
+	}
+	
+}
+
+int main() {
+
+	string word;
+	cin >> word;
+	while (word[loop] != '\0') {
+		x = true;
+		vowels(word,  loop);
+		uppercasee (word, loop);
+		loop++;
+	}
+
 	return 0;
 }
+
+
+
+
+
+
+/* another way 
+int main() {
+
+	string s;
+	cin >> s;
+	int i = 0;
+	while (s[i] !='\0') {
+		
+		bool x = true;
+		if (s[i] == 'a' || s[i] == 'o' || s[i] == 'y' || s[i] == 'u'
+			|| s[i] == 'i' || s[i] == 'e' || s[i] == 'A' || s[i] == 'O' || s[i] == 'Y'
+			|| s[i] == 'U'
+			|| s[i] == 'I' || s[i] == 'E') {
+			 x = false;
+		}
+		else
+		{
+			cout << ".";
+		}
+
+
+
+		if (s[i] < 97) {
+			
+				s[i] += 32;
+				cout << s[i];
+
+			i++;
+		}
+		else
+		{
+			if (x == false) {
+				i++;
+			}
+			else {
+				cout << s[i];
+				i++;
+			}
+		}
+	}
+
+	return 0;
+}
+*/
